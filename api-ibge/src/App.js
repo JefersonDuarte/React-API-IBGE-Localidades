@@ -30,7 +30,6 @@ const App = () => {
     const data = await response.json();
 
     setCidades(data);
-    console.log(cidades);
   }, [sigla]);
 
 return (
