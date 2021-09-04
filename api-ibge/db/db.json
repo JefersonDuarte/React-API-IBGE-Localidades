@@ -1,0 +1,12 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "nome": "Jeferson",
+            "sobrenome": "Duarte de Oliveira",
+            "idade": "24",
+            "estado": "São Paulo",
+            "cidade": "Cristais Paulista"
+        }
+    ]
+}
