@@ -32,24 +32,24 @@ const Endereco = () => {
     setCidades(data);
   }, [sigla]);
 
-return (
-  <div className="endereco">
-    <h2 className="title">Preencha seu endereço:</h2>
-    <form>
+  return (
+
+    <>
+      <label>Estado: </label>
       <select className="estados" onChange={e => handlingSigla(e)}>
         {estados.map(estado => (
           <option key={estado.id} value={estado.sigla} className={estado.nome}>{estado.nome}</option>
         ))}
       </select>
+      <br/>
+      <label>Cidade: </label>
       <select className="cidades">
         {cidades.map(cidade => (
           <option key={cidade.id} value={cidade.nome} className={cidade.nome}>{cidade.nome}</option>
         ))}
       </select>
-
-    </form>
-  </div>
-);
+    </>
+  );
 }
 
 export default Endereco;
