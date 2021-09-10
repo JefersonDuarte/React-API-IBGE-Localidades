@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import useForm from "../../hooks/useForm";
+import axios from 'axios';
 
 const Cadastro = () => {
 
@@ -8,8 +9,6 @@ const Cadastro = () => {
   }
 
   const [{ values, loading }, handleChange, handleSubmit] = useForm();
-
-
   const [estados, setEstados] = useState([]);
   const [sigla, setSigla] = useState("");
   const [cidades, setCidades] = useState([]);
@@ -30,8 +29,6 @@ const Cadastro = () => {
     const selectedState = e.target.value;
     setSigla(selectedState);
     handleChange(e);
-    console.log('values end', values);
-
   }
 
   useEffect(async () => {
@@ -42,8 +39,15 @@ const Cadastro = () => {
   }, [sigla]);
 
 
-  const submitForm = () => {
+  const submitForm = async () => {
     console.log('values', values);
+    console.log('values json', JSON.stringify(values));
+
+    const user = document.querySelector('.user');
+    const data = values;
+    const response = await axios.post('http://localhost:4000/users', data);
+    user.innerHTML = response.data.name;
+
   }
 
   return (
@@ -59,8 +63,8 @@ const Cadastro = () => {
             <input onChange={handleChange} id="surname" name="surname"></input>
           </fieldset>
           <fieldset style={fieldsetStyle}>
-            <label htmlFor="age">Data de Nascimento: </label>
-            <input onChange={handleChange} type="date" id="age" name="age"></input>
+            <label htmlFor="birth-date">Data de Nascimento: </label>
+            <input onChange={handleChange} type="date" id="birth-date" name="birth-date"></input>
           </fieldset>
           <label>Estado: </label>
           <select name="state" className="estados" onChange={e => handlingSigla(e)}>
@@ -80,6 +84,7 @@ const Cadastro = () => {
           </fieldset>
         </center>
       </form>
+      <div className="user"></div>
     </>
   );
 }
