@@ -63,8 +63,8 @@ const Cadastro = () => {
             <input onChange={handleChange} id="surname" name="surname"></input>
           </fieldset>
           <fieldset style={fieldsetStyle}>
-            <label htmlFor="birth-date">Data de Nascimento: </label>
-            <input onChange={handleChange} type="date" id="birth-date" name="birth-date"></input>
+            <label htmlFor="birthdate">Data de Nascimento: </label>
+            <input onChange={handleChange} type="date" id="birthdate" name="birthdate"></input>
           </fieldset>
           <label>Estado: </label>
           <select name="state" className="estados" onChange={e => handlingSigla(e)}>
